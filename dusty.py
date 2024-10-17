@@ -1,6 +1,6 @@
 import subprocess
 import glob
-
+import utils
 from stars import Model
 
 class Dusty():
@@ -81,11 +81,8 @@ class Dusty():
 
     def PrintParam(self):
         name = self._Model.get_Name()
-        with open(self._dustyPath+name+'.inp' , 'r') as f:
-            lines = f.readlines()
-            for line in lines[:73]:
-                print(line)
-
+        utils.PrintFile(self._dustyPath+name+'.inp',stop=73)
+        
     def LunchDusty(self):
         subprocess.check_call(['./dusty'],cwd=self._dustyPath)
 
