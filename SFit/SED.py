@@ -1,4 +1,4 @@
-import utils
+import SFit.utils as utils
 
 class SED():
 

@@ -1,7 +1,7 @@
 import subprocess
 import glob
-import utils
-from stars import Model
+import SFit.utils as utils 
+from SFit.stars import Model
 
 class Dusty():
 
@@ -22,7 +22,6 @@ class Dusty():
 
     def AvailableComposition(self):
         NkFiles = [file.split('/')[-1].split('.')[0] for file in glob.glob(self._dustyPath+'/Lib_nk/*.nk')]
-        #print(NkFiles)
         return NkFiles
         
 
@@ -82,7 +81,7 @@ class Dusty():
     def PrintParam(self):
         name = self._Model.get_Name()
         utils.PrintFile(self._dustyPath+name+'.inp',stop=73)
-        
+
     def LunchDusty(self):
         subprocess.check_call(['./dusty'],cwd=self._dustyPath)
 
